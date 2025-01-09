@@ -14,6 +14,7 @@ import java.util.List;
 @Builder
 @Data
 public class TopicResponse {
+    private Long id;
     private String title;
     private String message;
     private LocalDateTime creationDate;

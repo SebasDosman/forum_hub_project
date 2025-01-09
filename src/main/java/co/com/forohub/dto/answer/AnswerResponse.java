@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 @Builder
 @Data
 public class AnswerResponse {
+    private Long id;
     private String message;
-    private TopicResponse topic;
     private LocalDateTime creationDate;
     private UserResponse author;
     private String solution;

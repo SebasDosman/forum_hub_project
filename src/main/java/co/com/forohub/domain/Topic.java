@@ -1,5 +1,6 @@
 package co.com.forohub.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -41,6 +42,7 @@ public class Topic {
     private Course course;
 
     @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Answer> answers;
 
     @PrePersist

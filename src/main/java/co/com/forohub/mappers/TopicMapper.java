@@ -14,6 +14,7 @@ import java.util.List;
 public class TopicMapper {
     public static TopicResponse toTopicResponse(Topic topic) {
         return TopicResponse.builder()
+                .id(topic.getId())
                 .title(topic.getTitle())
                 .message(topic.getMessage())
                 .creationDate(topic.getCreationDate())

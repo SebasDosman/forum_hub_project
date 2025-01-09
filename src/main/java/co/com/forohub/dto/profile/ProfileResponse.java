@@ -8,5 +8,6 @@ import lombok.Data;
 @Builder
 @Data
 public class ProfileResponse {
+    private Long id;
     private String name;
 }

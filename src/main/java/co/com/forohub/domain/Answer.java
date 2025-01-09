@@ -1,5 +1,6 @@
 package co.com.forohub.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,6 +25,7 @@ public class Answer {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "topic_id", nullable = false)
+    @JsonBackReference
     private Topic topic;
 
     @Column(name = "creation_date", nullable = false, updatable = false)

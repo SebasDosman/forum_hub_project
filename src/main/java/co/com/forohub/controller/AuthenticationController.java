@@ -20,13 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController {
     private final IAuthenticationService authenticationService;
 
-    @PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse> login(@RequestBody @Valid AuthenticationRequest authenticationRequest) throws Exception {
-        return new ResponseEntity<>(authenticationService.login(authenticationRequest), HttpStatus.OK);
+    @PostMapping("/signIn")
+    public ResponseEntity<AuthenticationResponse> signIn(@RequestBody @Valid AuthenticationRequest authenticationRequest) throws Exception {
+        return new ResponseEntity<>(authenticationService.signIn(authenticationRequest), HttpStatus.OK);
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<UserResponse> register(@RequestBody @Valid CreateUserRequest createUserRequest) throws Exception {
-        return new ResponseEntity<>(authenticationService.register(createUserRequest), HttpStatus.CREATED);
+    @PostMapping("/signUp")
+    public ResponseEntity<UserResponse> signUp(@RequestBody @Valid CreateUserRequest createUserRequest) throws Exception {
+        return new ResponseEntity<>(authenticationService.signUp(createUserRequest), HttpStatus.CREATED);
     }
 }

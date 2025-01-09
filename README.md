@@ -93,8 +93,8 @@ Ensure you have the following installed:
 - PUT `/profiles`: Update a profile
 - DELETE `/profiles/{id}`: Delete a profile
 ### Authentication Endpoints
-- POST `/auth/register`: Register a new user
-- POST `/auth/login`: Authenticate a user
+- POST `/auth/signUp`: Register a new user
+- POST `/auth/signIn`: Authenticate a user
 
 ---
 

@@ -12,8 +12,10 @@ import java.util.List;
 public class UserMapper {
     public static UserResponse toUserResponse(User user) {
         return UserResponse.builder()
+                .id(user.getId())
                 .name(user.getName())
                 .email(user.getEmail())
+                .profiles(ProfileMapper.toProfileResponseList(user.getProfiles()))
                 .build();
     }
 

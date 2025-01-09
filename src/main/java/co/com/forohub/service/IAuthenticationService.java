@@ -6,6 +6,6 @@ import co.com.forohub.dto.user.CreateUserRequest;
 import co.com.forohub.dto.user.UserResponse;
 
 public interface IAuthenticationService {
-    AuthenticationResponse login(AuthenticationRequest authenticationRequest) throws Exception;
-    UserResponse register(CreateUserRequest createUserRequest) throws Exception;
+    AuthenticationResponse signIn(AuthenticationRequest authenticationRequest) throws Exception;
+    UserResponse signUp(CreateUserRequest createUserRequest) throws Exception;
 }

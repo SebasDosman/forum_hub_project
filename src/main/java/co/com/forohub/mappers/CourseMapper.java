@@ -9,6 +9,7 @@ import org.springframework.data.domain.Slice;
 public class CourseMapper {
     public static CourseResponse toCourseResponse(Course course) {
         return CourseResponse.builder()
+                .id(course.getId())
                 .name(course.getName())
                 .description(course.getDescription())
                 .build();

@@ -57,6 +57,17 @@ public class TokenService implements ITokenService {
         return decodedJWT.getSubject();
     }
 
+    @Override
+    public Long getExpirationTime(String token) throws Exception {
+        JWTVerifier verifier = JWT.require(algorithm)
+                .withIssuer("ForoHub")
+                .build();
+
+        DecodedJWT decodedJWT = verifier.verify(token);
+
+        return decodedJWT.getExpiresAt().toInstant().toEpochMilli();
+    }
+
     private Instant generateExpirationTime() {
         return LocalDateTime.now().plusHours(24).toInstant(ZoneOffset.of("-05:00"));
     }

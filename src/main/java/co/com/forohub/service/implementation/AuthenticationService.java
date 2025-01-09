@@ -35,7 +35,7 @@ public class AuthenticationService implements IAuthenticationService {
 
     @Override
     @Transactional
-    public AuthenticationResponse login(AuthenticationRequest authenticationRequest) throws Exception {
+    public AuthenticationResponse signIn(AuthenticationRequest authenticationRequest) throws Exception {
         if (!userRepository.existsByEmail(authenticationRequest.getEmail())) throw new NotFoundException(String.format(UserValidator.USER_NOT_FOUND, authenticationRequest.getEmail()));
 
         User user = userRepository.findByEmail(authenticationRequest.getEmail());
@@ -45,7 +45,7 @@ public class AuthenticationService implements IAuthenticationService {
 
     @Override
     @Transactional
-    public UserResponse register(CreateUserRequest createUserRequest) {
+    public UserResponse signUp(CreateUserRequest createUserRequest) {
         validateCreateUserRequest(createUserRequest);
 
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
@@ -66,9 +66,11 @@ public class AuthenticationService implements IAuthenticationService {
         return tokenService.generateToken(user);
     }
 
-    private AuthenticationResponse createAuthenticationResponse(String token, User user) {
+    private AuthenticationResponse createAuthenticationResponse(String token, User user) throws Exception {
         return AuthenticationResponse.builder()
+                .user(UserMapper.toUserResponse(user))
                 .token(token)
+                .expiresIn(tokenService.getExpirationTime(token))
                 .build();
     }
 

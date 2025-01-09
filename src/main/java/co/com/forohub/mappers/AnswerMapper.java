@@ -13,8 +13,8 @@ import java.util.List;
 public class AnswerMapper {
     public static AnswerResponse toAnswerResponse(Answer answer) {
         return AnswerResponse.builder()
+                .id(answer.getId())
                 .message(answer.getMessage())
-                .topic(TopicMapper.toTopicResponse(answer.getTopic()))
                 .creationDate(answer.getCreationDate())
                 .author(UserMapper.toUserResponse(answer.getAuthor()))
                 .solution(answer.getSolution())

@@ -6,9 +6,12 @@ import co.com.forohub.dto.profile.ProfileRequest;
 import co.com.forohub.dto.profile.ProfileResponse;
 import org.springframework.data.domain.Slice;
 
+import java.util.List;
+
 public class ProfileMapper {
     public static ProfileResponse toProfileResponse(Profile profile) {
         return ProfileResponse.builder()
+                .id(profile.getId())
                 .name(profile.getName())
                 .build();
     }
@@ -28,5 +31,9 @@ public class ProfileMapper {
 
     public static Slice<ProfileResponse> toProfileResponseSlice(Slice<Profile> profiles) {
         return profiles.map(ProfileMapper::toProfileResponse);
+    }
+
+    public static List<ProfileResponse> toProfileResponseList(List<Profile> profiles) {
+        return profiles.stream().map(ProfileMapper::toProfileResponse).toList();
     }
 }
